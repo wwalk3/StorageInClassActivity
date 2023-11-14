@@ -15,6 +15,8 @@ import com.android.volley.toolbox.Volley
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
 
+// TODO (1: Fix any bugs)
+// TODO (2: Add function saveComic(...) to save and load comic info automatically when app starts)
 
 class MainActivity : AppCompatActivity() {
 
