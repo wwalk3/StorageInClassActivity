@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var showButton: Button
     lateinit var comicImageView: ImageView
 
-    var beenClicked = false
     private val internalFilename = "my_file"
     private lateinit var file: File
 
@@ -69,8 +68,7 @@ class MainActivity : AppCompatActivity() {
         showButton.setOnClickListener {
             downloadComic(numberEditText.text.toString())
             // add check to make sure valid url, but:
-            beenClicked = true
-            saveComic(beenClicked, downloadComic)
+            saveComic(numberEditText.text.toString())
         }
 
     }
@@ -90,12 +88,12 @@ class MainActivity : AppCompatActivity() {
         Picasso.get().load(comicObject.getString("img")).into(comicImageView)
     }
 
-    // stake the data, save it to a file
+    // take the data, save it to a file
     // whenever the program starts again, the activity should automatically load
     // the last comic and display it
     // there always a file representing the last comic downloaded
 
-    private fun saveComic (beenClicked: Boolean, comicId: String) {
+    private fun saveComic (comicId: String) {
         try {
             val outputStream = FileOutputStream(file)
             outputStream.write(comicId.toByteArray())
